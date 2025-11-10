@@ -1,3 +1,11 @@
-# 飞鼠组网
+# App.Bin.feishunet
+应用包名：feishunet
 
-飞鼠组网
+显示名称：飞鼠组网
+
+版本：1.0.10
+
+发布者：@wbxingkong
+
+## 应用简介
+......
