@@ -1,0 +1,15 @@
+#!/bin/bash
+### Generic variables and functions
+### -------------------------------
+
+### Package specific variables and functions
+### ----------------------------------------
+
+
+sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
+ip6tables -P FORWARD ACCEPT
+iptables -P FORWARD ACCEPT
+
+
+SERVICE_COMMAND="./feishunet"

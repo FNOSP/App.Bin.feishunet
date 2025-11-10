@@ -1,0 +1,16 @@
+appname="feishunet"
+version="1.0.10"
+desc="操作极简的,超低延迟国产组网工具。"
+
+arch="x86"
+maintainer="飞鼠组网"
+maintainer_url="https://wiki.feishunet.com/"
+distributor="飞鼠网络"
+distributor_url="https://wiki.feishunet.com/"
+os_min_ver="0.8.1"
+helpurl="https://wiki.feishunet.com/"
+ctl_stop="true"
+desktop_uidir="ui"
+display_name="飞鼠组网"
+desktop_appname="feishunet.Application"
+source=thirdparty

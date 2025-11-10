@@ -1,0 +1,38 @@
+#!/bin/bash
+. $(dirname $0)/installer
+$(basename $0) > $TRIM_TEMP_LOGFILE
+#备份文件恢复到配置文件目录
+
+#!/bin/bash
+
+# 定义源目录和目标目录
+SOURCE_DIR="/var/apps/feishunet/meta"
+DEST_DIR="/var/apps/feishunet/target/bin/data"
+
+# 检查源目录是否存在
+if [ ! -d "$SOURCE_DIR" ]; then
+    echo "源目录 $SOURCE_DIR 不存在。"
+    exit 1
+fi
+
+# 检查目标目录是否存在，如果不存在则创建
+if [ ! -d "$DEST_DIR" ]; then
+    echo "目标目录 $DEST_DIR 不存在，正在创建..."
+    mkdir -p "$DEST_DIR"
+    if [ $? -ne 0 ]; then
+        echo "创建目标目录失败。"
+        exit 1
+    fi
+fi
+
+# 移动文件
+echo "正在将文件从 $SOURCE_DIR 移动到 $DEST_DIR/conf..."
+mv "$SOURCE_DIR"/* "$DEST_DIR/conf/"
+
+# 检查移动操作是否成功
+if [ $? -eq 0 ]; then
+    echo "文件移动成功。"
+else
+    echo "文件移动失败。"
+    exit 1
+fi

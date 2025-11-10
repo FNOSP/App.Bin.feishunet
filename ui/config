@@ -1,0 +1,13 @@
+{
+    ".url": {
+        "feishunet.Application": {
+            "title": "飞鼠组网",
+            "desc": "飞鼠组网",
+            "icon": "images/icon-{0}.png",
+            "type": "url",
+            "protocol": "http",
+            "allUsers": false,
+			"port": "9091"
+        }
+    }
+}

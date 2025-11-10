@@ -1,0 +1,1 @@
+function n(t){if(t<0)return console.error("你想干嘛？?"),"未知";if(t<60)return t+" 秒 ";if(t>=60&&t<60*60){let l=Math.floor(t/60);return t=t%60,l+" 分 "+t+" 秒 "}else{let l=Math.floor(t/60/60),i=Math.floor(t%3600/60);return t=t%60,l+" 小时 "+i+" 分 "+t+" 秒 "}}let r=0,o=null;function u(t){if(r==10){r=0,t();return}r++,o!==null&&clearTimeout(o),o=setTimeout(()=>{r=0},1e3)}export{n as a,u as t};
