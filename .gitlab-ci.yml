@@ -12,7 +12,6 @@ variables:
     - echo $fnversion
     - echo $CI_COMMIT_TAG
   script:
-    - export fnversion=$fnversion
     - bash build.sh $ARCH
     - curl -F "filename=@feishunet-${ARCH}.fpk" "http://192.168.3.104:8888/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/" #上传
   artifacts:
