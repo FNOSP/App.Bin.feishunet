@@ -1,5 +1,5 @@
 appname="feishunet"
-version="26.01.17"
+version="260116"
 desc="操作极简的,超低延迟国产组网工具。"
 
 platform="arm"
@@ -14,3 +14,4 @@ desktop_uidir="ui"
 display_name="飞鼠组网"
 desktop_appname="feishunet.Application"
 source=thirdparty
+
