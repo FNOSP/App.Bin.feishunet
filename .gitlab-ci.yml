@@ -1,6 +1,7 @@
 # .gitlab-ci.yml
 stages:
   - build
+  - upload
 
 variables:
   fnversion: "${CI_COMMIT_TAG}"   # 全局
@@ -33,3 +34,33 @@ build:arm:
   variables:
     ARCH: arm
   <<: *build_definition
+
+
+# 2. 汇总两个包 → 一个 zip → 上传
+upload:zip:
+  stage: upload
+  image: 192.168.0.226/feishuwg/ubuntu:webhook
+  needs:                    # 等前面两个 Job 完成并取回制品
+    - job: build:x86
+      artifacts: true
+    - job: build:arm
+      artifacts: true
+  before_script:
+    - zip -v
+  script:
+    - ZIP="feishunet-${fnversion}.zip"
+    - zip -j "$ZIP" feishunet-x86.fpk feishunet-arm.fpk   # -j 去掉路径
+    - ls -lh "$ZIP"
+    # 上传（把 zip 当成 file 字段）
+    - |
+      curl -F "file=@${ZIP}" \
+           "http://192.168.3.104:8888/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/"
+  artifacts:
+    name: "feishunet-all-${fnversion}"
+    paths:
+      - "feishunet-${fnversion}.zip"
+    expire_in: 30 days
+  only:
+    - tags
+  tags:
+    - test
